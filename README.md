@@ -1,83 +1,30 @@
-# Xeus-Lite demo
+# jupy-lab: środowisko do ćwiczeń
 
-[![lite-badge](https://jupyterlite.rtfd.io/en/latest/_static/badge.svg)](https://jupyterlite.github.io/xeus-lite-demo/notebooks/?path=demo.ipynb)
+* Krzysztof Molenda
 
-This GitHub template allows you to create deployments of JupyterLite with a custom set of conda packages.
+Wersja przeglądarkowa JupyterLab, wykorzystująca kernel `xeus`
 
-## 💡 How to make your own deployment
+Nie wymaga instalowania czegokolwiek na lokalnym komputerze. Nie wymaga też rejestracji. Kod uruchamiany jest w przeglądarce, a nie na serwerze (technologia WASM). Wersja ta jest przeznaczona do ćwiczeń i nie wymaga instalacji JupyterLab ani Pythona na lokalnym komputerze.
 
-Creating a new deployment can be done in three easy steps:
+Wersja dostosowana jest do prowadzania moich ćwiczeń - wymagane pakiety zostały preinstalowane.
 
-**Step 1: Apply the GitHub template**
+Publikowane dokumenty wykorzystują MyST Markdown, który jest rozszerzeniem Markdown. W przypadku otwarcia dokumentu w innych środowiskach niektóre treści mogą być niepoprawnie wyświetlane, ale nadal powinny być czytelne, zaś kod powinien działać poprawnie.
 
-1. Click the **"Use this template"** button in the upper right corner of the GitHub repository.
-2. Choose a name for your project and select the GitHub organization where you want to create it.
-3. Then hit **"Create repository from template"** to finalize the setup.
+## Technikalia
 
-**Step 2: Enable building the GitHub pages from GitHub actions.**
+Sprawdzenie wersji Pythona można wykonać poleceniem:
 
-1. Once your repository is created, enable GitHub Pages by configuring GitHub Actions. This will build and deploy your site automatically.
-2. Your deployment will be accessible at the following URL: https://{USERNAME}.github.io/{DEMO_REPO_NAME}.
-
-**Step 3: Customize your conda environment**
-
-1. Update your ``environment.yml`` file to include the required packages.
-2. This ensures that your environment has all the necessary dependencies.
-
-## 🎬 Visual Guide
-
-For a step-by-step visual guide, check out the screencast below:
-
-![Deploy your own](deploy.gif)
-
-## 📦 How to install kernels and packages
-
-You can install specific kernels and extra packages by adding them to the ``environment.yml`` file.
-
-See https://jupyterlite-xeus.readthedocs.io/en/latest/environment.html for more documentation.
-
-### Example 1: JupyterLite with NumPy and Matplotlib
-
-To create a JupyterLite deployment with NumPy and Matplotlib pre-installed, edit the ``environment.yml`` file as follows:
-
-```yml
-name: xeus-kernel
-channels:
-  - https://repo.prefix.dev/emscripten-forge-dev
-  - https://repo.prefix.dev/conda-forge
-dependencies:
-  - xeus-python
-  - numpy
-  - matplotlib
+```python
+import sys
+print(sys.version)
 ```
 
-### Example 2: JupyterLite with R and coursekata
+Sprawdzenie dostępnych pakietów można wykonać poleceniem:
 
-To use the R kernel and the coursekata package, edit the environment.yml file as follows:
+```python
+from importlib.metadata import distributions
 
-```yml
-name: xeus-kernel
-channels:
-  - https://repo.prefix.dev/emscripten-forge-dev
-  - https://repo.prefix.dev/conda-forge
-dependencies:
-  - xeus-r
-  - r-coursekata
+for dist in distributions():
+    print(f"{dist.metadata['Name']}=={dist.version}")
 ```
 
-### Example 3: JupyterLite with C++
-
-To use the C++ kernel, edit the environment.yml file as follows:
-
-```yml
-name: xeus-kernel
-channels:
-  - https://repo.prefix.dev/emscripten-forge-dev
-  - https://repo.prefix.dev/conda-forge
-dependencies:
-  - xeus-cpp
-```
-
-## 📦 How to install other jupyterlite plugins
-
-If you want to install jupyterlite plugins, e.g. `jupyterlite-terminal`, add those plugins to the `.github/build-environment.yml` file.
