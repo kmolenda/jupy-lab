@@ -5,10 +5,10 @@ dependencies:
   - python
   - pip
   - jupyter_server
-  - jupyterlite-core >=0.6
-  - jupyterlite-xeus >=4
+  - jupyterlite-core >=0.7
+  - jupyterlite-xeus >=4.3
   - jupyterlab-myst
-  - notebook >=7.4
+  - notebook >=7.5
   - jupyterlite-terminal
   - pip:
       - jupyterlab-open-url-parameter
