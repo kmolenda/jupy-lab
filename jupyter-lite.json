@@ -1,7 +1,7 @@
 {
   "jupyter-lite-schema-version": 0,
   "jupyter-config-data": {
-    "appName": "KM Jupyter Lab",
+    "appName": "kmolenda Jupy-Lab",
     "disabledExtensions": ["@jupyterlab/application-extension:logo"]
   }
 }
